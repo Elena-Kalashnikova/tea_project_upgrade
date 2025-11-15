@@ -1,0 +1,113 @@
+<section class="main-form mb-5">
+  <div class="container">
+    <div *ngIf="!success">
+    <h1 class="text-center fw-bold mb-5">Сделать заказ</h1>
+      <form class="needs-validation" novalidate [formGroup]="checkoutForm">
+        <div class="row g-3">
+          <div class="col-12 wow animate__backInUp">
+            <div class="mb-3">
+              <label class="form-label">Товар</label>
+              <input type="text" class="form-control" id="product" formControlName="product" [readonly]="true">
+            </div>
+          </div>
+
+          <div class="col-4 wow animate__backInLeft">
+            <div class="mb-3">
+              <label for="name" class="form-label">Имя</label>
+              <input type="text"
+                     class="form-control"
+                     id="name"
+                     formControlName="name" required>
+              <div class="invalid-feedback" *ngIf="checkoutForm.get('name')?.invalid &&
+              (checkoutForm.get('name')?.touched || checkoutForm.get('name')?.dirty)
+              && checkoutForm.get('name')?.errors?.['required']">
+                Введите Имя
+              </div>
+              <div class="invalid-feedback" *ngIf="checkoutForm.get('name')?.errors?.['pattern']">
+                Введите корректное Имя
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4  wow animate__backInDown">
+            <div class="mb-3">
+              <label for="last-name" class="form-label">Фамилия</label>
+              <input type="text" class="form-control" id="last-name" formControlName="lastName">
+              <div class="invalid-feedback" *ngIf="checkoutForm.get('lastName')?.invalid &&
+              (checkoutForm.get('lastName')?.touched || checkoutForm.get('lastName')?.dirty)
+              && checkoutForm.get('lastName')?.errors?.['required']">
+                Введите Фамилию
+              </div>
+              <div class="invalid-feedback" *ngIf="checkoutForm.get('lastName')?.errors?.['pattern']">
+                Введите корректную Фамилию
+              </div>
+            </div>
+          </div>
+          <div class="col-4 wow animate__backInRight">
+            <div class="mb-3">
+              <label class="form-label">Телефон</label>
+              <input type="text" class="form-control" id="phone" formControlName="phone">
+              <div class="invalid-feedback" *ngIf="checkoutForm.get('phone')?.invalid &&
+              (checkoutForm.get('phone')?.touched || checkoutForm.get('phone')?.dirty)
+              && checkoutForm.get('phone')?.errors?.['required']">
+                Введите Номер
+              </div>
+              <div class="invalid-feedback" *ngIf="checkoutForm.get('phone')?.errors?.['pattern']">
+                Введите корректный Номер
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 wow animate__backInLeft">
+            <div class="mb-3">
+              <label class="form-label">Страна</label>
+              <input type="text" class="form-control" id="country" formControlName="country">
+              <div class="invalid-feedback" *ngIf="checkoutForm.get('country')?.invalid &&
+              (checkoutForm.get('country')?.touched || checkoutForm.get('country')?.dirty)
+              && checkoutForm.get('country')?.errors?.['required']">
+                Введите Страну
+              </div>
+            </div>
+          </div>
+          <div class="col-6 wow animate__backInRight">
+            <div class="mb-3">
+              <label class="form-label">Индекс</label>
+              <input type="text" class="form-control" id="index" formControlName="zip">
+              <div class="invalid-feedback" *ngIf="checkoutForm.get('zip')?.invalid &&
+              (checkoutForm.get('zip')?.touched || checkoutForm.get('zip')?.dirty)
+              && checkoutForm.get('zip')?.errors?.['required']">
+                Введите Индекс
+              </div>
+            </div>
+          </div>
+          <div class="col-12 wow animate__backInUp">
+            <div class="mb-3">
+              <label class="form-label">Адрес</label>
+              <input type="text" class="form-control" id="address" formControlName="address">
+              <div class="invalid-feedback" *ngIf="checkoutForm.get('address')?.invalid &&
+              (checkoutForm.get('address')?.touched || checkoutForm.get('address')?.dirty)
+              && checkoutForm.get('address')?.errors?.['required']">
+                Введите Адрес
+              </div>
+              <div class="invalid-feedback" *ngIf="checkoutForm.get('address')?.errors?.['pattern']">
+                Введите корректный Адрес
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 wow animate__backInUp">
+            <div class="mb-3">
+              <label class="form-label">Комментарий к заказу</label>
+              <input type="text" class="form-control" id="comment" formControlName="comment">
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary ps-4 pe-4 hvr-glow" id="btn" type="submit" (click)="order()">Отправить</button>
+        <div class="text-danger" *ngIf="errorOrder">Произошла ошибка. Попробуйте еще раз.</div>
+      </form>
+    </div>
+    <div *ngIf="success" class="mx-auto w-100 position-absolute top-50 start-50 translate-middle">
+      <h1 class="thanks text-center fw-bold">Спасибо за заказ!</h1>
+    </div>
+  </div>
+</section>

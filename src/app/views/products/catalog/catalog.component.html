@@ -1,0 +1,20 @@
+<section class="collection mt-5">
+  <div class="container">
+    <h1 class="text-center mb-5 pt-3 fw-bold">{{header}}</h1>
+    <div class="row g-4">
+      <div class="col-xl-4 col-md-6 col-xs-12" *ngFor="let card of cards">
+        <div class="card wow animate__backInLeft" id="card">
+          <img src="{{card.image}}" class="card-img-top w-100" alt="detox tea">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">{{ card.title }}</h5>
+            <p class="card-text">{{ card.description | slice:0: 100 }}...</p>
+            <a [routerLink]="['/card', card.id]" class="btn btn-primary hvr-grow-shadow">Подробнее</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="loader" class="loader-bg">
+      <span class="loader"></span>
+    </div>
+  </div>
+</section>

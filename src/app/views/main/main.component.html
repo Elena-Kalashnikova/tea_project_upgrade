@@ -1,0 +1,54 @@
+<section class="main-slider mt-5 wow animate__backInDown">
+  <div class="container">
+    <ngx-slick-carousel class="carousel" [config]="slideConfig">
+      <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+        <img src="{{ slide.image }}" alt="" width="100%">
+      </div>
+    </ngx-slick-carousel>
+  </div>
+</section>
+<section class="main-accordion mt-5">
+  <div class="container">
+    <ngb-accordion [closeOthers]="true" #acc="ngbAccordion">
+      <ngb-panel title="Собираете ли вы подарочные боксы?">
+        <ng-template ngbPanelContent>
+          Да, у нас есть такая услуга. Мы можем собрать подарочный бокс на любой вкус, объем
+          и стоимость!
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel title="Сколько у вас разновидностей чая?">
+        <ng-template ngbPanelContent>
+          У нас 6 разновидностей чая: черный, улун, зеленый, желтый, белый и пуэр!
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel title="В какой срок осуществляется доставка?">
+        <ng-template ngbPanelContent>
+          Доставка от 60 мин до 72 мин в зависимости от района!
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel title="У вас обновляется ассортимент?">
+        <ng-template ngbPanelContent>
+          Конечно! Мы постоянно добавляем новые коллекции чая!
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel title="Какого объема у вас пачки чая?">
+        <ng-template ngbPanelContent>
+          От 200 грамм до 1 кг!
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+</section>
+<ng-template #popup let-modal>
+  <div class="modal-header">
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+    <div class="modal-body">
+      <div class="modal-body text-center">
+        Посмотрите наши чайные коллекции
+      </div>
+      <div class="modal-footer border-0">
+        <a [routerLink]="'/catalog'" (click)="modal.dismiss('Cross click')" type="button" class="btn btn-primary">Смотреть</a>
+      </div>
+    </div>
+</ng-template>
